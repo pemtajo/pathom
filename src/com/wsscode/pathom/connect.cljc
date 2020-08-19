@@ -524,7 +524,8 @@
                                          :key         (-> env :ast :key)
                                          ::sym        (-> env ::resolver-data ::sym)
                                          ::input-data entity})]
-            (>! pool-chan {:out out
+            (>! pool-chan {:ts  (pt/now)
+                           :out out
                            :f   #(do
                                    (pt/trace-leave env tid {::pt/event ::schedule-resolver})
                                    (try
